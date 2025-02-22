@@ -7,6 +7,14 @@ import 'swiper/swiper-bundle.css';
 import Image from 'next/image';
 import { Container } from '@/app/shared/components/UIKIT/Container/Container';
 import { useBasketStore } from '@/app/shared/core/providers/basketProvider';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 export default function Page() {
   const params = useParams();
@@ -152,6 +160,18 @@ export default function Page() {
           </div>
         </div>
       </div>
+      <Dialog>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account and remove your data from our
+              servers.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </Container>
   );
 }
