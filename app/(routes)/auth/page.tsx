@@ -1,0 +1,42 @@
+'use client';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Input } from '@/components/ui/input';
+import Button from '@/app/shared/components/UIKIT/Button/Button';
+import { AxiosInterceptor } from '@/app/shared/core/http';
+import { useLocalStorage } from '@/app/shared/hooks/useLocalStorage';
+
+export default function Page() {
+  const [value, setValue, removeValue] = useLocalStorage('token', '');
+  const [login, setLogin] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const router = useRouter();
+  
+  const signupHandler = async () => {
+    if (login.length > 6 && password.length > 6) {
+      const data = await AxiosInterceptor.$post('/user/signup', { login, password });
+      if (data.status === 200) {
+        const { body } = data;
+        setValue(body.token);
+        router.push('/');
+      } else {
+        console.log('Error:', data.status);
+      }
+    }
+  };
+
+  return (
+    <div>
+      <Input onChange={e => setLogin(e.currentTarget.value)} value={login} placeholder="Логин" />
+      <Input onChange={e => setPassword(e.currentTarget.value)} value={password} placeholder="Пароль" />
+
+      <Button size="m" onClick={async () => await signupHandler()} style="black_outline">
+        Регистрация
+      </Button>
+
+      {/* <Button size="m" onClick={() => {}} style="black_outline">
+        
+      </Button> */}
+    </div>
+  );
+}
