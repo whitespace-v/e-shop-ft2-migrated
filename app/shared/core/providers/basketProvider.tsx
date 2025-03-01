@@ -12,7 +12,7 @@ export const BasketStoreContext = createContext<BasketStoreApi | undefined>(unde
 // Провайдер
 export const BasketStoreProvider = ({ children }: { children: ReactNode }) => {
   //storeRef - ссылка
-  const storeRef = useRef<BasketStoreApi>(undefined);
+  const storeRef = useRef<BasketStoreApi>();
   // если стора нет - создаем
   if (!storeRef.current) {
     // storeRef.current -> значения, там у нас хранится стор

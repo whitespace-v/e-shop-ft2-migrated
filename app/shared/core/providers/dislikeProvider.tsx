@@ -8,7 +8,7 @@ export type DislikeStoreApi = ReturnType<typeof createDislikeStore>;
 export const DislikeStoreContext = createContext<DislikeStoreApi | undefined>(undefined);
 
 export const DislikeStoreProvider = ({ children }: { children: ReactNode }) => {
-  const storeRef = useRef<DislikeStoreApi>(undefined);
+  const storeRef = useRef<DislikeStoreApi>();
   if (!storeRef.current) {
     storeRef.current = createDislikeStore(initDislikeStore());
   }

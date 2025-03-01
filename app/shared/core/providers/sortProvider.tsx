@@ -12,7 +12,7 @@ export interface SortStoreProviderProps {
 }
 
 export const SortStoreProvider = ({ children }: SortStoreProviderProps) => {
-  const storeRef = useRef<SortStoreApi>(undefined);
+  const storeRef = useRef<SortStoreApi>();
   if (!storeRef.current) {
     storeRef.current = createSortStore(initSortStore());
   }

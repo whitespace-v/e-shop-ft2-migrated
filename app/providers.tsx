@@ -10,6 +10,7 @@ import { DislikeStoreProvider } from '@/app/shared/core/providers/dislikeProvide
 import { FavoriteStoreProvider } from '@/app/shared/core/providers/favoriteProvider';
 import { SortStoreProvider } from '@/app/shared/core/providers/sortProvider';
 import { BasketStoreProvider } from '@/app/shared/core/providers/basketProvider';
+import { UserStoreProvider } from './shared/core/providers/userProvider';
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -28,13 +29,15 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <HeroUIProvider navigate={router.push}>
       {/* <NextThemesProvider {...themeProps}> */}
-      <DislikeStoreProvider>
-        <FavoriteStoreProvider>
-          <BasketStoreProvider>
-            <SortStoreProvider>{children}</SortStoreProvider>
-          </BasketStoreProvider>
-        </FavoriteStoreProvider>
-      </DislikeStoreProvider>
+      <UserStoreProvider>
+        <DislikeStoreProvider>
+          <FavoriteStoreProvider>
+            <BasketStoreProvider>
+              <SortStoreProvider>{children}</SortStoreProvider>
+            </BasketStoreProvider>
+          </FavoriteStoreProvider>
+        </DislikeStoreProvider>
+      </UserStoreProvider>
       {/* </NextThemesProvider> */}
     </HeroUIProvider>
   );

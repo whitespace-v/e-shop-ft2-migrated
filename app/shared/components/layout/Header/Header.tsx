@@ -9,11 +9,16 @@ import { useEffect, useState } from 'react';
 import { Search } from '@/app/shared/icons/Search';
 import { useSortStore } from '@/app/shared/core/providers/sortProvider';
 import { useDebounceCallback } from '@/app/shared/hooks/useDebounceCallback';
+import { useUserStore } from '@/app/shared/core/providers/userProvider';
+import { useRouter } from 'next/navigation';
+import { useLocalStorage } from '@/app/shared/hooks/useLocalStorage';
 
 const Header = () => {
+  const [value, setValue, removeValue] = useLocalStorage('token', '');
+  const router = useRouter();
   const [isActiveInput, setIsActiveInput] = useState<boolean>(false);
   const { queryAction, query } = useSortStore(state => state);
-
+  const { user_login, user_id, setUser } = useUserStore(state => state);
   const debounced = useDebounceCallback(queryAction, 500);
 
   useEffect(() => {
@@ -24,6 +29,10 @@ const Header = () => {
     if (q.length > 3) debounced(q);
   };
 
+  const signoutHandler = () => {
+    removeValue();
+    setUser(0, '');
+  };
   return (
     <header className={s.header}>
       <Container>
@@ -53,6 +62,18 @@ const Header = () => {
                 <Cart className={s.buttons__Cart} />
               </button>
             </div>
+
+            {user_id !== 0 ? (
+              <div className="flex gap-4 items-center">
+                <div>{user_login}</div>
+                <div onClick={() => signoutHandler()}>Sign out</div>
+              </div>
+            ) : (
+              <div className="flex gap-4 items-center">
+                <div onClick={() => router.push('/signin')}>Sign In</div>
+                <div onClick={() => router.push('/signup')}>Sign Up</div>
+              </div>
+            )}
           </div>
         </div>
       </Container>
