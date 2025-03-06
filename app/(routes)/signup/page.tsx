@@ -23,7 +23,8 @@ export default function Page() {
         setUser(1, body.user.login);
         router.push('/');
       } else {
-        console.log('Error:', data.status);
+        // toast.error('Event has not been created')
+        console.log('Error:', data);
       }
     }
   };

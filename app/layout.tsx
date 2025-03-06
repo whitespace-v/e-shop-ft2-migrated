@@ -7,6 +7,8 @@ import { siteConfig } from '@/config/site';
 import { abeezee } from '@/config/fonts';
 import Footer from './shared/components/layout/Footer/Footer';
 import Header from './shared/components/layout/Header/Header';
+import { Toaster } from 'sonner';
+// import { Toaster } from '@/components/ui/sonner';
 
 // export const metadata: Metadata = {
 //   title: {
@@ -34,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'white' }}>
           <Header />
           <main>{children}</main>
+          <Toaster />
           <Footer />
         </Providers>
       </body>

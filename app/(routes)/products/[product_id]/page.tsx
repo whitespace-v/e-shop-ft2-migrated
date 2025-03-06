@@ -15,6 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import ProductsMark from '@/app/shared/components/routes/Products/ProductsMark/ProductsMark';
 
 export default function Page() {
   const params = useParams();
@@ -160,7 +161,8 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Dialog>
+      <ProductsMark />
+      {/* <Dialog>
         <DialogTrigger>Open</DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -171,7 +173,7 @@ export default function Page() {
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </Container>
   );
 }

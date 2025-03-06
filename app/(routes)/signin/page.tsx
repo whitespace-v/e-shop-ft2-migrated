@@ -6,6 +6,7 @@ import Button from '@/app/shared/components/UIKIT/Button/Button';
 import { AxiosInterceptor } from '@/app/shared/core/http';
 import { useLocalStorage } from '@/app/shared/hooks/useLocalStorage';
 import { useUserStore } from '@/app/shared/core/providers/userProvider';
+import { toast } from 'sonner';
 
 export default function Page() {
   const [value, setValue, removeValue] = useLocalStorage('token', '');
@@ -23,7 +24,8 @@ export default function Page() {
         setUser(1, body.user.login);
         router.push('/');
       } else {
-        console.log('Error:', data.status);
+        toast.error(data.message);
+        // console.log('Error:', data);
       }
     }
   };
