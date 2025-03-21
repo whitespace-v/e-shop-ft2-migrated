@@ -14,11 +14,13 @@
   padding: 12px 12px 18px 12px;
 
   &__like {
-    width: 220px;
+    align-self: flex-end;
     height: 60px;
-    padding-top: 24px;
+    margin-top: 24px;
+    margin-right: 6px;
     display: flex;
     justify-content: end;
+    cursor: pointer;
   }
 
   &__title {
