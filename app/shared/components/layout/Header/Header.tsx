@@ -10,13 +10,14 @@ import { Search } from '@/app/shared/icons/Search';
 import { useSortStore } from '@/app/shared/core/providers/sortProvider';
 import { useDebounceCallback } from '@/app/shared/hooks/useDebounceCallback';
 import { useUserStore } from '@/app/shared/core/providers/userProvider';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocalStorage } from '@/app/shared/hooks/useLocalStorage';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import Link from 'next/link';
 import { useFavoriteStore } from '@/app/shared/core/providers/favoriteProvider';
 import { useBasketStore } from '@/app/shared/core/providers/basketProvider';
 import { Trash2 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Header = () => {
   const [value, setValue, removeValue] = useLocalStorage('token', '');
@@ -40,11 +41,16 @@ const Header = () => {
     removeValue();
     setUser(0, '');
   };
+  const path = usePathname()
+  const products = [
+    1, 2, 3, 4 
+  ]
   return (
     <header className={s.header}>
       <Container>
         <div className={s.header__content}>
           <Logo color="black" />
+
           <div className={s.search}>
             <div className={s.search__wrapper}>
               <Search className={cn(s.search__icon, isActiveInput && s.search__icon_active)} />
@@ -57,7 +63,20 @@ const Header = () => {
                 placeholder={'Search'}
               />
             </div>
+            {(products.length > 0 && path !== '/products') && 
+              <Card className='absolute top-[68px] left-0 right-0 border border-gray-400 border-solid'>
+               <CardContent className='flex flex-col gap-2 p-0'>
+                {products.map((p,idx) => 
+                  <Link href={'/products' + p} 
+                  className={`hover:bg-gray-200 p-2 ${idx === products.length - 1 || idx === 0 ? "rounded-xl" : ""}`}
+                  >Товар 2</Link>
+                )}
+                
+               </CardContent>
+              </Card>
+              }
           </div>
+
           <div className={s.buttons}>
             <HoverCard>
               <HoverCardTrigger>
