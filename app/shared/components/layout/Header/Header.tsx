@@ -32,6 +32,7 @@ const Header = () => {
   useEffect(() => {
     console.log(query);
   }, [query]);
+  
 
   const queryHandler = (q: string) => {
     if (q.length > 3) debounced(q);
@@ -67,11 +68,13 @@ const Header = () => {
               <Card className='absolute top-[68px] left-0 right-0 border border-gray-400 border-solid'>
                <CardContent className='flex flex-col gap-2 p-0'>
                 {products.map((p,idx) => 
-                  <Link href={'/products' + p} 
-                  className={`hover:bg-gray-200 p-2 ${idx === products.length - 1 || idx === 0 ? "rounded-xl" : ""}`}
-                  >Товар 2</Link>
+                  <div key={idx}>
+                    <Link 
+                      href={'/products/' + p} 
+                      className={`hover:bg-gray-200 p-2 ${idx === products.length - 1 ? "rounded-b-xl" : ""} ${idx === 0 ? "rounded-t-xl" : ""}`}
+                    >Товар 2</Link>
+                  </div>
                 )}
-                
                </CardContent>
               </Card>
               }
@@ -82,9 +85,9 @@ const Header = () => {
               <HoverCardTrigger>
                 <Link href={'/favorite'}>
                   <div className={s.buttons__item}>
-                    <button className={s.buttons__btn}>
+                    <div className={s.buttons__btn}>
                       <WishList className={s.buttons__WishList} />
-                    </button>
+                    </div>
                     {favorites.length > 0 && (
                       <div className="rounded-full bg-red-500 p-1 flex items-center justify-center text-foreground-100 h-[24px] w-[24px]">
                         {favorites.length}
@@ -113,9 +116,9 @@ const Header = () => {
               <HoverCardTrigger>
                 <Link href={'/basket'}>
                   <div className={s.buttons__item}>
-                    <button className={cn(s.buttons__btn, s.btn_cart)}>
+                    <div className={cn(s.buttons__btn, s.btn_cart)}>
                       <Cart className={s.buttons__Cart} />
-                    </button>
+                    </div>
                     {basketItems.length > 0 && (
                       <div className="rounded-full bg-red-500 p-1 flex items-center justify-center text-foreground-100 h-[24px] w-[24px]">
                         {basketItems.length}
