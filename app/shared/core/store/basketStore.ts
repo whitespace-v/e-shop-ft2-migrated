@@ -30,8 +30,8 @@ export const createBasketStore = (initState: BasketState = defaultInitState) => 
     basketAction: id =>
       set(state => ({
         basketItems: state.basketItems.includes(id)
-          ? state.basketItems.filter(e => e !== id)
-          : state.basketItems.concat(id),
+          ? state.basketItems.filter(e => e !== id) 
+          : state.basketItems.concat(id), 
       })),
   }));
 };

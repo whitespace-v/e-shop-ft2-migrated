@@ -161,6 +161,39 @@ export default function Page() {
           </div>
         </div>
       </div>
+      <div>
+        <div>
+          Details
+        </div>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, debitis? Velit quibusdam quas, esse harum distinctio voluptate eum ea cumque ipsam nobis unde voluptatem dolore, ab animi architecto sunt mollitia!
+          Voluptatem itaque hic nobis amet voluptates tempore iure! Tempora, reprehenderit quisquam voluptate amet vero voluptatibus accusamus, vel autem rerum commodi laboriosam dignissimos quas possimus dolorum minus praesentium voluptas odio. Dolorum.
+          Eius quasi dolore explicabo id architecto ut, amet consectetur dolorem, placeat nihil dolores voluptate recusandae totam maiores. Nihil incidunt nam beatae, autem libero accusantium. Quidem veritatis ipsum eos ex vitae.
+        </div>
+        <div className='w-full'>
+          {
+            [
+              {
+                title: "Screen Diagonal",
+                value: "6.7\""
+              },
+              {
+                title: "Screen Diagonal",
+                value: "6.7\""
+              },
+              {
+                title: "Screen Diagonal",
+                value: "6.7\""
+              }
+            ].map(i =>
+              <div className='flex items-start justify-between w-full border-solid border-gray-400 border-[0] border-b pt-[12px] pb-[6px]'>
+                <div>{i.title}</div>
+                <div>{i.value}</div>
+              </div>
+            )
+          }
+        </div>
+      </div>
       <ProductsMark />
       {/* <Dialog>
         <DialogTrigger>Open</DialogTrigger>

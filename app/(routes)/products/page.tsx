@@ -109,7 +109,7 @@ export default function Page() {
           {/* products */}
           <div></div>
           <div className={s.Products__content__pagination}>
-            <Pagination page={page} pages={12} />
+            <Pagination page={page} pages={6} />
           </div>
         </div>
       </div>

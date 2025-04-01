@@ -33,7 +33,9 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         <DislikeStoreProvider>
           <FavoriteStoreProvider>
             <BasketStoreProvider>
-              <SortStoreProvider>{children}</SortStoreProvider>
+              <SortStoreProvider>
+                {children}
+              </SortStoreProvider>
             </BasketStoreProvider>
           </FavoriteStoreProvider>
         </DislikeStoreProvider>
