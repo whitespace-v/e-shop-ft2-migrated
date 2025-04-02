@@ -195,6 +195,7 @@ export default function Page() {
         </div>
       </div>
       <ProductsMark />
+      <ProductsReview/>
       {/* <Dialog>
         <DialogTrigger>Open</DialogTrigger>
         <DialogContent>
