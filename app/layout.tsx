@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body className={clsx('min-h-screen bg-background font-sans antialiased', abeezee.variable)}>
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'white' }}>
-          <Header />
+          {/* <Header /> */}
           <main>{children}</main>
           <Toaster />
           <Footer />
