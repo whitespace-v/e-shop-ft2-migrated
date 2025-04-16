@@ -1,15 +1,28 @@
 'use client'
 import Button from "@/app/shared/components/UIKIT/Button/Button";
+import { AxiosInterceptor } from "@/app/shared/core/http";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
     const [asc, setAsc] = useState<boolean>(true)
     const [filter, setFilter] = useState<string>("id")
     const [checked, setChecked] = useState<string[]>([])
+
+
+    useEffect(() => {
+        getProducts()
+    }, [asc, filter, checked])
+
+    const getProducts = async () => {
+        const req = await AxiosInterceptor.$get('/products/all', {
+            asc, filter, checked: checked.join(',')
+        })
+    }
+
     return (
         <div>
             <Table>
