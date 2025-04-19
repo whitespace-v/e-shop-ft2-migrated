@@ -3,6 +3,7 @@ import UsersChart from "../components/UsersChart";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { OrdersChart } from "../components/OrdersChart";
 
 export default function Page() {
     return (
@@ -10,6 +11,7 @@ export default function Page() {
             {/* charts */}
             <div>
                 <UsersChart/>
+                <OrdersChart />
                 {/* Bar Chart - Custom Label */}
             </div>
             {/* orders */}
